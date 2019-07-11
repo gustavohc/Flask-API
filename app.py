@@ -13,10 +13,6 @@ app.config['SECRET_KEY'] = 'super-secret'
 app.debug = True
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity) # new endpoint: '/auth'
 
 api.add_resource(ItemResources, '/item/<string:name>')
